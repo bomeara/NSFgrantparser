@@ -82,4 +82,14 @@ GetAllDataFromMultipleYears <- function(years=seq(from=2017, to=1959, by=-1), sa
   return(result)
 }
 
+RemoveEmails <- function() {
+  files <- system("ls -1 NSFgrants_*", intern=TRUE)
+  files <- files[!grepl("NSFgrants_AllSearchedYears.csv", files)]
+  for (i in sequence(length(files))) {
+    local.file <- read.csv(files[i])
+    local.file <- local.file[,!grepl("Email", names(local.file), ignore.case=TRUE)] #prevent spam
+    write.csv(local.file, file=files[i])
+  }
+}
+
 #look at plotting like http://www.axismaps.com/blog/2014/10/geography-of-jobs-animated-mapping-with-d3/
