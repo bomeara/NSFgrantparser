@@ -33,21 +33,34 @@ GetFromFile<- function(file) {
 # }
 
 GetAllDataFromYear <- function(year, verbose=TRUE) {
+  original.dir <- getwd()
+  setwd(tempdir())
   tmp <- tempfile()
   curl::curl_download(paste0("https://www.nsf.gov/awardsearch/download?DownloadFileName=", year,"&All=true"), tmp)
   if(verbose) {
     print(paste("Starting year", year))
   }
   all.files <- unzip(tmp, list=FALSE)
-
+  bad.files <- c()
   result.list <- list(rep(NA, length(all.files)))
   for (i in sequence(length(all.files))) {
     if(verbose & i%%1000==0) {
       print(paste("File",i,"of", length(all.files),"for year", year))
     }
-    result.list[[i]] <- GetFromFile(all.files[i])
+    local.file.result <- NULL
+    try(local.file.result <- GetFromFile(all.files[i]))
+    if(!is.null(local.file.result)) {
+      result.list[[i]] <- local.file.result
+    } else {
+      bad.files <- i
+    }
+  }
+  if(length(bad.files)>0) {
+    result.list <- result.list[-bad.files]
   }
   result <- plyr::rbind.fill(result.list)
+  result <- result[,!grepl("Email", names(result), ignore.case=TRUE)] #prevent spam
+  setwd(original.dir)
   return(result)
 }
 
