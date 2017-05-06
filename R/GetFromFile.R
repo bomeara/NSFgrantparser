@@ -64,6 +64,11 @@ GetAllDataFromYear <- function(year, verbose=TRUE) {
   return(result)
 }
 
+#' Download data from NSF for all grants
+#' @param years Numeric vector of years
+#' @param save.dir Path to where to save files
+#' @return A data.frame with matches.
+#' @export
 GetAllDataFromMultipleYears <- function(years=seq(from=2017, to=1959, by=-1), save.dir=getwd()) {
   result <- GetAllDataFromYear(years[1])
   write.csv(result, file=paste0(save.dir, "/NSFgrants_",years[1], ".csv"))
@@ -90,6 +95,11 @@ RemoveEmails <- function() {
     local.file <- local.file[,!grepl("Email", names(local.file), ignore.case=TRUE)] #prevent spam
     write.csv(local.file, file=files[i])
   }
+}
+
+AssignYear <- function(x) {
+  x$Year <- as.numeric(t(sapply(strsplit(x$Award.AwardEffectiveDate, "/"), "[", 1:3))[,3])
+  return(x)
 }
 
 #look at plotting like http://www.axismaps.com/blog/2014/10/geography-of-jobs-animated-mapping-with-d3/
