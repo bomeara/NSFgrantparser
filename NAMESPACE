@@ -2,5 +2,6 @@
 
 export(FilterForString)
 export(GetAllDataFromMultipleYears)
+export(GetAllGrantDataForClades)
 export(SearchForPhylo)
 export(SearchForTaxon)

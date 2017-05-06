@@ -102,4 +102,17 @@ AssignYear <- function(x) {
   return(x)
 }
 
+
+#' Load data saved in inst/extdata
+#' @param min.year First year of data to pull in
+#' @param max.year Last year of data to to pull in
+LoadPackageData <- function(min.year=1959, max.year=2017) {
+  data <- data.frame()
+  for (year in min.year:max.year) {
+    data <- rbind(data, read.csv(system.file("extdata", paste0("NSFgrants_", year, ".csv"), package = "NSFgrantparser")))
+  }
+  return(data)
+}
+
+
 #look at plotting like http://www.axismaps.com/blog/2014/10/geography-of-jobs-animated-mapping-with-d3/
