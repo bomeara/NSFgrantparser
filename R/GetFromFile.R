@@ -107,11 +107,17 @@ AssignYear <- function(x) {
 #' @param min.year First year of data to pull in
 #' @param max.year Last year of data to to pull in
 LoadPackageData <- function(min.year=1959, max.year=2017) {
-  data <- data.frame()
+  result <- data.frame()
   for (year in min.year:max.year) {
-    data <- rbind(data, read.csv(system.file("extdata", paste0("NSFgrants_", year, ".csv"), package = "NSFgrantparser")))
+    local.result <- read.csv(system.file("extdata", paste0("NSFgrants_", year, ".csv"), package = "NSFgrantparser"))
+    if(year==min.year) {
+      result <- local.data
+    } else {
+      merge.names <- intersect(names(result), names(local.result))
+      result <- merge(result, local.result, by=merge.names, all=TRUE)
+    }
   }
-  return(data)
+  return(result)
 }
 
 
