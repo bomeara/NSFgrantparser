@@ -11,6 +11,9 @@ LoadPackageData(min.year = 1959, max.year = 2017)
 
 \item{max.year}{Last year of data to to pull in}
 }
+\value{
+Data.frame of all data
+}
 \description{
 Load data saved in inst/extdata
 }

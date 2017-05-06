@@ -3,5 +3,6 @@
 export(FilterForString)
 export(GetAllDataFromMultipleYears)
 export(GetAllGrantDataForClades)
+export(LoadPackageData)
 export(SearchForPhylo)
 export(SearchForTaxon)

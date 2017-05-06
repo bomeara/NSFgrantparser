@@ -106,6 +106,8 @@ AssignYear <- function(x) {
 #' Load data saved in inst/extdata
 #' @param min.year First year of data to pull in
 #' @param max.year Last year of data to to pull in
+#' @return Data.frame of all data
+#' @export
 LoadPackageData <- function(min.year=1959, max.year=2017) {
   result <- data.frame()
   for (year in min.year:max.year) {
