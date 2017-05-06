@@ -111,7 +111,7 @@ LoadPackageData <- function(min.year=1959, max.year=2017) {
   for (year in min.year:max.year) {
     local.result <- read.csv(system.file("extdata", paste0("NSFgrants_", year, ".csv"), package = "NSFgrantparser"))
     if(year==min.year) {
-      result <- local.data
+      result <- local.result
     } else {
       merge.names <- intersect(names(result), names(local.result))
       result <- merge(result, local.result, by=merge.names, all=TRUE)
