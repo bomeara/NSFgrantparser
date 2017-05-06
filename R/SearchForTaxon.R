@@ -9,7 +9,7 @@
 SearchForTaxon <- function(taxon, data, other.names=NULL, db="ncbi", descendant.ranks = c("order", "superfamily", "family", "tribe")) {
 	all.taxon.names <- c()
 	for (i in sequence(length(descendant.ranks))) {
-		local.downstream  <- downstream(taxon, db=db, downto=descendant.ranks[i])
+		local.downstream  <- taxize::downstream(taxon, db=db, downto=descendant.ranks[i])
 		if (nrow(local.downstream[[1]])>0) {
 			all.taxon.names <- c(all.taxon.names, local.downstream[[1]]$childtaxa_name)
 		}
