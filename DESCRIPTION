@@ -1,0 +1,18 @@
+Package: NSFgrantparser
+Title: Pull and process data from NSF on their grants
+Version: 0.1
+Authors@R: c(person("Brian", "O'Meara", role=c("aut", "cre"), email="omeara.brian@gmail.com"))
+Author: Brian O'Meara <omeara.brian@gmail.com>
+Maintainer: Brian O'Meara <omeara.brian@gmail.com>
+Description: Learn from NSF on where their money goes
+Depends:
+    R (>= 3.2.3)
+Imports:
+    XML,
+    taxize
+Suggests:
+    testthat
+URL: https://github.com/phylotastic/datelife, http://www.datelife.org
+License: GPL (>=2)
+LazyData: false
+RoxygenNote: 6.0.1
