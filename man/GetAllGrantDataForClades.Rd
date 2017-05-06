@@ -4,14 +4,14 @@
 \alias{GetAllGrantDataForClades}
 \title{Pull out funding data for a set of clades}
 \usage{
-GetAllGrantDataForClades(clade.names, clade.other.names = as.list(rep(NULL,
-  length(clade.names))), data = LoadPackageData(), terms = c("systematics",
-  "phylogenetics", "taxonomy", "tree of life"))
+GetAllGrantDataForClades(clade.names, clade.other.names = NULL,
+  data = LoadPackageData(), terms = c("systematics", "phylogenetics",
+  "taxonomy", "tree of life"))
 }
 \arguments{
 \item{clade.names}{Vector of clade names}
 
-\item{clade.other.names}{List of vectors with other clade names ("beetle" for Coleoptera for example)}
+\item{clade.other.names}{Optional list of vectors with other clade names ("beetle" for Coleoptera for example)}
 
 \item{data}{Data.frame from GetAllDataFromMultipleYears}
 
