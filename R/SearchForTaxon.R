@@ -27,7 +27,7 @@ SearchForTaxon <- function(taxon, data, other.names=NULL, db="itis", descendant.
 #' @param terms Vector of terms to look for
 #' @return A data.frame with matches.
 #' @export
-SearchForPhylo <- function(data, terms = c("systematics", "phylogenetics", "taxonomy", "tree of life")) {
+SearchForPhylo <- function(data, terms = c("systematics", "phylogen", "taxonom", "tree of life")) {
 	result <- FilterForString(paste(terms, collapse="|"), data)
 	return(result)
 }
@@ -36,14 +36,12 @@ SearchForPhylo <- function(data, terms = c("systematics", "phylogenetics", "taxo
 #' @param clade.names Vector of clade names
 #' @param clade.other.names Optional list of vectors with other clade names ("beetle" for Coleoptera for example)
 #' @param data Data.frame from GetAllDataFromMultipleYears
-#' @param terms Vector of terms to look for
 #' @return List of data.frames with matches.
 #' @export
-GetAllGrantDataForClades <- function(clade.names, clade.other.names=NULL, data=LoadPackageData(), terms=c("systematics", "phylogenetics", "taxonomy", "tree of life")) {
-	pruned.data <- SearchForPhylo(data, terms)
+GetAllGrantDataForClades <- function(clade.names, clade.other.names=NULL, data=LoadPackageData()) {
 	result.list <- list(rep(NA, length(clade.names)))
 	for (clade.index in sequence(length(clade.names))) {
-		clade.result <- SearchForTaxon(clade.names[clade.index], data=pruned.data, other.names=clade.other.names[[clade.index]])
+		clade.result <- SearchForTaxon(clade.names[clade.index], data=data, other.names=clade.other.names[[clade.index]])
 		result.list[[clade.index]] <- clade.result
 		names(result.list)[clade.index] <- clade.names[clade.index]
 	}

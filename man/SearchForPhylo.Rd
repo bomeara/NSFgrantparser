@@ -4,7 +4,7 @@
 \alias{SearchForPhylo}
 \title{Search for grants in the area of systematics}
 \usage{
-SearchForPhylo(data, terms = c("systematics", "phylogenetics", "taxonomy",
+SearchForPhylo(data, terms = c("systematics", "phylogen", "taxonom",
   "tree of life"))
 }
 \arguments{
