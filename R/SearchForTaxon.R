@@ -6,7 +6,7 @@
 #' @param descendant.ranks Vector of ranks to look for.
 #' @return A data.frame with matches.
 #' @export
-SearchForTaxon <- function(taxon, data, other.names=NULL, db="ncbi", descendant.ranks = c( "family", "tribe")) {
+SearchForTaxon <- function(taxon, data, other.names=NULL, db="itis", descendant.ranks = c( "family", "tribe")) {
 	all.taxon.names <- c()
 	for (i in sequence(length(descendant.ranks))) {
 		local.downstream  <- taxize::downstream(taxon, db=db, downto=descendant.ranks[i])

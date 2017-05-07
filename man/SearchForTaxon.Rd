@@ -4,7 +4,7 @@
 \alias{SearchForTaxon}
 \title{Search for taxon, including its descendent taxa (by default)}
 \usage{
-SearchForTaxon(taxon, data, other.names = NULL, db = "ncbi",
+SearchForTaxon(taxon, data, other.names = NULL, db = "itis",
   descendant.ranks = c("family", "tribe"))
 }
 \arguments{
