@@ -5,7 +5,7 @@
 \title{Pull out funding data for a set of clades}
 \usage{
 GetAllGrantDataForClades(clade.names, clade.other.names = NULL,
-  data = LoadPackageData())
+  data = LoadPackageData(), descendant.ranks = c("family", "genus"))
 }
 \arguments{
 \item{clade.names}{Vector of clade names}
@@ -13,6 +13,8 @@ GetAllGrantDataForClades(clade.names, clade.other.names = NULL,
 \item{clade.other.names}{Optional list of vectors with other clade names ("beetle" for Coleoptera for example)}
 
 \item{data}{Data.frame from GetAllDataFromMultipleYears}
+
+\item{descendant.ranks}{Vector of ranks to look for.}
 }
 \value{
 List of data.frames with matches.
