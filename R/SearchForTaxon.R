@@ -40,7 +40,7 @@ SearchForPhylo <- function(data, terms = c("systematics", "phylogen", "taxonom",
 #' @param descendant.ranks Vector of ranks to look for.
 #' @return List of data.frames with matches.
 #' @export
-GetAllGrantDataForClades <- function(clade.names, clade.other.names=NULL, data=LoadPackageData(), descendant.ranks = c( "family", "genus")) {
+GetAllGrantDataForClades <- function(clade.names, clade.other.names=NULL, data=LoadPackageData(), descendant.ranks = c( "family")) {
 	result.list <- list(rep(NA, length(clade.names)))
 	for (clade.index in sequence(length(clade.names))) {
 		clade.result <- NULL

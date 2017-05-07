@@ -5,7 +5,7 @@
 \title{Pull out funding data for a set of clades}
 \usage{
 GetAllGrantDataForClades(clade.names, clade.other.names = NULL,
-  data = LoadPackageData(), descendant.ranks = c("family", "genus"))
+  data = LoadPackageData(), descendant.ranks = c("family"))
 }
 \arguments{
 \item{clade.names}{Vector of clade names}
