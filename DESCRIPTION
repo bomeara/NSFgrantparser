@@ -9,7 +9,8 @@ Depends:
     R (>= 3.2.3)
 Imports:
     XML,
-    taxize
+    taxize,
+    rphylotastic
 Suggests:
     testthat
 URL: https://github.com/phylotastic/datelife, http://www.datelife.org

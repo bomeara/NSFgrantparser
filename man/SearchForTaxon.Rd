@@ -5,7 +5,7 @@
 \title{Search for taxon, including its descendent taxa (by default)}
 \usage{
 SearchForTaxon(taxon, data, other.names = NULL, db = "ncbi",
-  descendant.ranks = c("order", "superfamily", "family", "tribe"))
+  descendant.ranks = c("family", "tribe"))
 }
 \arguments{
 \item{taxon}{A taxon name}

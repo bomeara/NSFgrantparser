@@ -6,7 +6,7 @@
 #' @param descendant.ranks Vector of ranks to look for.
 #' @return A data.frame with matches.
 #' @export
-SearchForTaxon <- function(taxon, data, other.names=NULL, db="ncbi", descendant.ranks = c("order", "superfamily", "family", "tribe")) {
+SearchForTaxon <- function(taxon, data, other.names=NULL, db="ncbi", descendant.ranks = c( "family", "tribe")) {
 	all.taxon.names <- c()
 	for (i in sequence(length(descendant.ranks))) {
 		local.downstream  <- taxize::downstream(taxon, db=db, downto=descendant.ranks[i])
@@ -48,4 +48,16 @@ GetAllGrantDataForClades <- function(clade.names, clade.other.names=NULL, data=L
 		names(result.list)[clade.index] <- clade.names[clade.index]
 	}
 	return(result.list)
+}
+
+#' Extract taxon names
+#' @param data Data.frame from GetAllDataFromMultipleYears
+#' @return list of lists of names
+#' @export
+ExtractTaxonNames <- function(data) {
+	taxon.names <- list(rep(NA, nrow(data)))
+	for (i in sequence(nrow(data))) {
+		try(taxon.names[[i]] <- rphylotastic::GetScientificNamesFromText(paste(as.character(data$Award.AwardTitle[i]), as.character(data$Award.AbstractNarration[i]))))
+	}
+	return(taxon.names)
 }
