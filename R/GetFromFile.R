@@ -111,7 +111,7 @@ AssignYear <- function(x) {
 LoadPackageData <- function(min.year=1959, max.year=2017) {
   result <- data.frame()
   for (year in min.year:max.year) {
-    local.result <- read.csv(system.file("extdata", paste0("NSFgrants_", year, ".csv"), package = "NSFgrantparser"))
+    local.result <- read.csv(system.file("extdata", paste0("NSFgrants_", year, ".csv"), package = "NSFgrantparser"), stringsAsFactors=FALSE)
     if(year==min.year) {
       result <- local.result
     } else {
